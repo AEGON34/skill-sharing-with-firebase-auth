@@ -1,48 +1,62 @@
-import React, { useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import bg from "../assets/beautifulbg.png"
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FaEye } from 'react-icons/fa';
 import { IoEyeOff } from 'react-icons/io5';
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../Context/Authcontext';
 const Signin = () => {
     const [show,setShow]=useState(false);
-    const [info,setInfo]=useState(null);
+   const {info,setInfo}=useContext(AuthContext)
+   const location=useLocation()
+   console.log(location)
+   const from=location.state||'/'
+   const navigate=useNavigate()
+    const emailref=useRef(null)
+    // if(info){
+    //   navigate('/')
+    //   return;
+    // }
     const handlesubmit=(e)=>{
         e.preventDefault();
         const email=e.target.email.value;
         const password=e.target.password.value;
-        console.log(email,password);
+      
         signInWithEmailAndPassword(auth,email,password)
         .then(res=>{
-            console.log(res.user)
+      
             toast("✅ Signed in successfully")
             setInfo(res.user)
+            navigate(from)
         })
         .catch(err=>{
             toast("error ."+err.message)
         })
     }
-    const handlesignout=()=>{
-        signOut(auth)
-        .then(()=>{
-            toast("✅ Signed out successfully")
-            setInfo(null)
-        })
-    }
+    
     const handleGoogleSignin=()=>{
         const googleauthprovider=new GoogleAuthProvider()
         signInWithPopup(auth,googleauthprovider)
         .then(res=>{
-            console.log(res.user)
             setInfo(res.user)
             toast("✅ Signed in successfully with google")
+            navigate(from)
         })
         .catch(err=>{
             toast("error ."+err.message)
         })
 
+    }
+    const forgotpassword=()=>{
+      const email=emailref.current.value
+      sendPasswordResetEmail(auth,email)
+      .then(res=>{
+        toast("✅ Password reset email sent")
+      }).catch(err=>{
+        toast("error ."+err.message)
+      })
     }
   return (
      <div className="min-h-screen w-full overflow-hidden relative">
@@ -55,17 +69,9 @@ const Signin = () => {
         {/* glass card */}
 
         <div className="card w-full max-w-md border border-white/20 bg-white/10 text-white shadow-2xl backdrop-blur-xl">
-          {
-            info? <div className="card w-full max-w-md border border-white/20 bg-white/10 text-white shadow-2xl backdrop-blur-xl">
-                <img src={info?.photoURL} className='h-10 w-10 rounded-full  mx-auto' alt="" />
-                <h1 className='font-semibold text-white/60 text-center '>{info?.displayName}</h1>
-                <h1 className='font-semibold text-white/60 text-center '>{info?.email}</h1>
-                <div className="flex justify-center">
-                    <button className='border-white/30 bg-white/50 mt-4 w-40 rounded-2xl mb-2 cursor-pointer'  onClick={()=>{handlesignout()}}>Sign Out</button>
-                </div>
-            </div>: <div>
-                 <h1 className="text-center text-3xl font-semibold mt-6">
-              Sign In
+          <div>
+                         <h1 className="text-center text-3xl font-semibold mt-6">
+             Log In
             </h1>
             <form onSubmit={handlesubmit} className="mt-4 space-y-3 p-10"> 
             <label >
@@ -73,6 +79,7 @@ const Signin = () => {
                 <input
                   name="email"
                   type="text"
+                  ref={emailref}
                   placeholder="Enter an email"
                   className="input input-bordered w-full bg-white/20 placeholder-white/60"
                   required
@@ -93,13 +100,17 @@ const Signin = () => {
                  right-2 text-2xl cursor-pointer '>
                     {show?<FaEye></FaEye>:<IoEyeOff></IoEyeOff>}
                 </span>
+                
            </div>
+           <button onClick={() => forgotpassword()} className="text-sm mt-1 text-white/70 hover:text-white" type="button" >
+                  Forgot Password?
+                </button>
             
-                <button className="btn mt-4 w-full">Sign Up</button>
+                <button className="btn mt-4 w-full">Login</button>
              <p className="mt-4 text-center text-sm text-white/80">
                           Don't have an account?{" "}
                           <Link to="/signup" className="link">
-                            Sign up
+                            Register
                           </Link>
                         </p>    
                         <div className="flex items-center justify-center gap-2 my-2">
@@ -123,7 +134,6 @@ const Signin = () => {
               </button>
             </form>
             </div>
-          }
         </div>
       </div>
     </div>
