@@ -16,7 +16,7 @@ const Signup = () => {
         const email=e.target.email.value;
         const password=e.target.password.value;
         console.log(password)
-        const regx=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&#]{6,}$/
+        const regx =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#/]).{6,}$/;
         if(!regx.test(password)){
   toast("❌ Must have 6 chars, uppercase, lowercase, number & special symbol.")
   return }
