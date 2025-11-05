@@ -46,13 +46,13 @@ const Signup = () => {
 
   return (
     <div className="min-h-screen w-full overflow-hidden relative">
-      {/* setting the background */}
+
       <img className="absolute object-cover w-full h-full" src={bg} alt="" />
-      {/* soft dark overlay to increase contrast */}
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
-      {/* centered container */}
+
       <div className="relative z-10 flex min-h-screen items-center justify-center p-4">
-        {/* glass card */}
+
 
         <div className="card w-full max-w-md border border-white/20 bg-white/10 text-white shadow-2xl backdrop-blur-xl">
            <h1 className="text-center text-3xl font-semibold mt-6">

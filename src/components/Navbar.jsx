@@ -1,39 +1,45 @@
-import React, { useContext } from "react";
+import React, { use, useContext } from "react";
 import Mylink from "./Mylink";
 import { AuthContext } from "../Context/Authcontext";
 import { signOut } from "firebase/auth";
 import { toast } from "react-toastify";
 import { auth } from "../Firebase/firebase.config";
 import { DotLoader } from "react-spinners";
+import logo from "../assets/logo.png"
+import { useNavigate } from "react-router";
+import { ToastBar } from "react-hot-toast";
 
 const Navbar = () => {
   const { info, setInfo, loading } = useContext(AuthContext);
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      setInfo(null);
-      toast("✅ Signed out successfully");
-    } catch (e) {
-      toast.error("Could not sign out. Try again.");
-      console.error(e);
-    }
+  const navigate = useNavigate();
+  const handleSignOut =  () => {
+    console.log("signout clicked")
+       signOut(auth)
+       .then(()=>{
+         setInfo(null);
+         ToastBar("✅ Signed out successfully");
+         navigate("/signin");
+       })
+       .catch((e) => {
+         ToastBar("Could not sign out. Try again.");
+            });
+            console.log("signout clicked")
   };
 
   const menuItems = (
     <>
-      <Mylink to="/" className="p-2 rounded-xl">Home</Mylink>
-  
-        <Mylink to="/profile" className="p-2 rounded-xl">My Profile</Mylink>
-      
+     <li> <Mylink to="/" className="p-2 rounded-xl">Home</Mylink></li>
+     <li> <Mylink to="/profile" className="p-2 rounded-xl">My Profile</Mylink></li>
     </>
   );
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
-      {/* LEFT */}
+ 
+ 
       <div className="navbar-start">
-        {/* Mobile hamburger */}
+  
+  
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
@@ -43,22 +49,22 @@ const Navbar = () => {
             </svg>
           </div>
           <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow cursor-pointer"
           >
             {menuItems}
           </ul>
         </div>
-
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <img className="h-14 w-14" src={logo} alt="Logo" />
       </div>
 
-      {/* CENTER (desktop menu) */}
+
+
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menuItems}</ul>
       </div>
 
-      {/* RIGHT (auth section) */}
+  
+  
       <div className="navbar-end">
         {loading ? (
           <DotLoader size={24} />
@@ -75,18 +81,10 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-base-100  w-30 rounded-box"
             >
-              <li className="pointer-events-none">
-                <div className="py-2">
-                  <div className="font-semibold text-center">{info?.displayName || "User"}</div>
-                  <div className="text-xs text-center opacity-70">{info?.email}</div>
-                </div>
-              </li>
-              <l
-              i><Mylink to="/profile">My Profile</Mylink></l>
               <li>
-                <button onClick={handleSignOut} className="btn btn-sm mt-1">Log Out</button>
+                <button onClick={handleSignOut} className="btn btn-sm mt-1 cursor-pointer text-blue-600">Log Out</button>
               </li>
             </ul>
           </div>
