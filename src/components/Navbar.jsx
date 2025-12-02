@@ -30,31 +30,32 @@ const Navbar = () => {
     <>
      <li> <Mylink to="/" className="p-2 rounded-xl">Home</Mylink></li>
      <li> <Mylink to="/profile" className="p-2 rounded-xl">My Profile</Mylink></li>
+     <li> <Mylink to="/all-skills" className="p-2 rounded-xl">All Skills</Mylink></li>
+     <li> <Mylink to="/about-us" className="p-2 rounded-xl">About Us</Mylink></li>
+     <li> <Mylink to="/contract" className="p-2 rounded-xl">Contact</Mylink></li>
+     <li> <Mylink to="/support" className="p-2 rounded-xl">Support</Mylink></li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm shadow-gray-500 container mx-auto sticky bg-fixed top-0 z-50">
  
  
       <div className="navbar-start">
   
   
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-                 viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </div>
+         <div className="flex justify-center items-center">
+          <img className="h-15 w-15 mr-2.5"  src="/logo.png" alt="" />
+          <h2 className="font-bold text-3xl">Skill Exchange</h2>
+         </div>
           <ul
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow cursor-pointer"
           >
             {menuItems}
           </ul>
         </div>
-        <img className="h-14 w-14" src={logo} alt="Logo" />
+        
       </div>
 
 
