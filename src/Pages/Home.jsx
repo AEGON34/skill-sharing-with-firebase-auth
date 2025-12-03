@@ -44,7 +44,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-amber-100">
+    <div className="">
       <main className="min-h-screen ">
         {/* 1. Hero Section (Swiper) - already present, add framer-motion */}
         <motion.div
@@ -70,12 +70,12 @@ const Home = () => {
                   alt=""
                   className="w-full h-full object-cover brightness-75 contrast-125 rounded-lg"
                 />
-                <div className="absolute inset-0 bg-black/50 rounded-lg" />
+                <div className="absolute inset-0 rounded-lg" style={{backgroundColor: 'rgba(105,11,34,0.55)'}} />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-                  <h2 className="text-3xl sm:text-4xl font-bold drop-shadow-lg">
+                  <h2 className="text-3xl sm:text-4xl font-bold drop-shadow-lg text-brand-cream">
                     “Practice English Daily”
                   </h2>
-                  <p className="mt-2 text-lg opacity-90">
+                  <p className="mt-2 text-lg opacity-90 text-brand-peach font-medium">
                     Every expert was once a beginner.
                   </p>
                 </div>
@@ -170,7 +170,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false }}
-              className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-fuchsia-600 via-blue-600 to-cyan-400 bg-clip-text text-transparent tracking-wide drop-shadow-lg"
+              className="text-[40px] md:text-4xl font-extrabold text-center mb-4 bg-clip-text tracking-wide drop-shadow-lg"
             >
               Why Choose Us?
             </motion.h2>
@@ -210,14 +210,14 @@ const Home = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                   whileHover={{ scale: 1.07 }}
-                  className="rounded-xl p-6 shadow-xl bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border border-blue-200 flex flex-col items-center"
+                  className="rounded-xl p-6 shadow-xl bg-brand-cream border border-[rgba(27,77,62,0.06)] flex flex-col items-center"
                 >
                   <img
                     src={f.img}
                     alt={f.title}
                     className="w-20 h-20 rounded-full mb-3 shadow-md object-cover"
                   />
-                  <h3 className="font-semibold text-lg mb-2 text-blue-600 animate-pulse">
+                  <h3 className="font-semibold text-lg mb-2 text-brand-maroon">
                     {f.title}
                   </h3>
                   <p className="text-gray-700 text-center">{f.desc}</p>
@@ -229,7 +229,7 @@ const Home = () => {
           {/* 3. Top Categories Section */}
           <motion.section
             variants={leftVariant}
-            initial="hidden"
+            initial="hidden" 
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
             className="my-16"
@@ -239,7 +239,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false }}
-              className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-wide drop-shadow-lg"
+              className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-clip-text tracking-wide drop-shadow-lg text-brand-maroon"
             >
               Top Skill Categories
             </motion.h2>
@@ -254,7 +254,7 @@ const Home = () => {
               />
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 justify-center">
-              {["Programming", "Design", "Marketing", "Languages"].map(
+              {['Programming', 'Design', 'Marketing', 'Languages'].map(
                 (cat, i) => (
                   <motion.div
                     key={cat}
@@ -263,7 +263,7 @@ const Home = () => {
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
                     whileHover={{ scale: 1.13, rotate: 2 }}
-                    className="rounded-xl p-5 shadow-xl bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 border border-green-200 text-center font-semibold text-lg text-green-700"
+                    className="rounded-xl p-5 shadow-lg bg-brand-cream border border-[rgba(105,11,34,0.06)] text-center font-semibold text-lg text-brand-green"
                   >
                     {cat}
                   </motion.div>
@@ -285,7 +285,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false }}
-              className=" text-3xl md:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-400 bg-clip-text text-transparent tracking-wide drop-shadow-lg"
+              className=" text-3xl md:text-4xl font-extrabold text-center mb-4 bg-clip-text tracking-wide drop-shadow-lg text-brand-maroon"
             >
               How It Works
             </motion.h2>
@@ -325,14 +325,14 @@ const Home = () => {
                   whileInView="visible"
                   viewport={{ once: false, amount: 0.3 }}
                   whileHover={{ scale: 1.07 }}
-                  className="rounded-xl p-6 shadow-xl bg-gradient-to-br from-yellow-50 via-orange-50 to-pink-50 border border-yellow-200 w-full md:w-1/3 flex flex-col items-center"
+                  className="rounded-xl p-6 shadow-lg bg-brand-cream border border-[rgba(105,11,34,0.06)] w-full md:w-1/3 flex flex-col items-center"
                 >
                   <img
                     src={s.img}
                     alt={s.step}
                     className="w-16 h-16 rounded-full mb-3 shadow-md object-cover"
                   />
-                  <h3 className="font-semibold text-lg mb-2 text-yellow-600 animate-bounce">
+                  <h3 className="font-semibold text-lg mb-2 text-brand-peach animate-bounce">
                     {s.step}
                   </h3>
                   <p className="text-gray-700 text-center">{s.desc}</p>
@@ -354,7 +354,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false }}
-              className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-gradient-to-r from-indigo-400 via-blue-400 to-green-400 bg-clip-text text-transparent tracking-wide drop-shadow-lg"
+              className="text-3xl md:text-4xl font-extrabold text-center mb-4 bg-clip-text tracking-wide drop-shadow-lg text-brand-maroon"
             >
               What Our Users Say
             </motion.h2>
@@ -398,15 +398,15 @@ const Home = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    className="rounded-xl p-8 shadow-2xl bg-gradient-to-br from-indigo-50 via-blue-50 to-green-50 border border-indigo-200 text-center flex flex-col items-center"
+                    className="rounded-xl p-8 shadow-lg bg-brand-cream border border-[rgba(27,77,62,0.06)] text-center flex flex-col items-center"
                   >
                     <img
                       src={t.img}
                       alt={t.name}
                       className="w-16 h-16 rounded-full mb-3 shadow-md object-cover"
                     />
-                    <p className="text-lg italic text-gray-800">“{t.text}”</p>
-                    <span className="block mt-4 font-semibold text-indigo-600">
+                    <p className="text-lg italic text-brand-maroon">“{t.text}”</p>
+                    <span className="block mt-4 font-semibold text-brand-green">
                       - {t.name}
                     </span>
                   </motion.div>
@@ -423,7 +423,7 @@ const Home = () => {
             viewport={{ once: false, amount: 0.3 }}
             className="my-16 flex flex-col items-center justify-center"
           >
-            <div className="rounded-2xl px-8 py-10 bg-gradient-to-r from-fuchsia-600 via-blue-600 to-cyan-400 shadow-2xl text-center">
+            <div className="rounded-2xl px-8 py-10 shadow-2xl text-center" style={{background: 'linear-gradient(90deg, #690B22 0%, #E07A5F 50%, #1B4D3E 100%)'}}>
               <motion.h2
                 variants={titleAnim}
                 initial="hidden"
@@ -443,7 +443,7 @@ const Home = () => {
               />
               <Mylink
                 to="signup"
-                className="btn btn-lg bg-white text-fuchsia-600 font-bold shadow-lg rounded-xl px-6 py-3 hover:bg-fuchsia-100 transition-all"
+                className="btn btn-lg btn-primary font-bold shadow-lg rounded-xl px-6 py-3 hover:opacity-95 transition-all"
               >
                 Join Now
               </Mylink>
@@ -463,7 +463,7 @@ const Home = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false }}
-                className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent tracking-wide drop-shadow-lg animate-bounce"
+                className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-brand-maroon tracking-wide drop-shadow-lg animate-bounce"
               >
                 Skills that you can use from here
               </motion.h1>
@@ -493,24 +493,9 @@ const Home = () => {
                   viewport={{ once: false, amount: 0.3 }}
                   className="mt-4 flex flex-col sm:flex-row gap-3 justify-center mb-4"
                 >
-                  <Mylink
-                    to="toprated"
-                    className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl shadow-sm rounded-xl p-4 border border-gray-100 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-white font-bold"
-                  >
-                    Top Rated Providers
-                  </Mylink>
-                  <Mylink
-                    to="howworks"
-                    className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl shadow-sm rounded-xl p-4 border border-gray-100 bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 text-white font-bold"
-                  >
-                    How It Works
-                  </Mylink>
-                  <Mylink
-                    to="testimonials"
-                    className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl shadow-sm rounded-xl p-4 border border-gray-100 bg-gradient-to-r from-indigo-400 via-blue-400 to-green-400 text-white font-bold"
-                  >
-                    Testimonials
-                  </Mylink>
+                  <Mylink to="toprated" className="btn btn-sm btn-primary shadow-sm rounded-xl px-5 py-3 font-bold">Top Rated</Mylink>
+                  <Mylink to="howworks" className="btn btn-sm btn-secondary shadow-sm rounded-xl px-5 py-3 font-bold">How It Works</Mylink>
+                  <Mylink to="testimonials" className="btn btn-sm btn-accent shadow-sm rounded-xl px-5 py-3 font-bold">Testimonials</Mylink>
                 </motion.div>
 
                 <section className="grid grid-cols-1 gap-5 lg:grid-cols-3 md:grid-cols-2 md:gap-8 pb-12">

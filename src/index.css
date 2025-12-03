@@ -1,8 +1,63 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+:root{
+  /* Brand palette provided by user */
+  --brand-maroon: #690B22;
+  --brand-peach: #E07A5F;
+  --brand-cream: #F1E3D3;
+  --brand-green: #1B4D3E;
+
+  /* Convenience aliases for components */
+  --bg: var(--brand-cream);
+  --fg: #1b1b1b;
+  --muted: #6b6b6b;
+}
+
+html,body,#root{
+  height:100%;
+}
+
+body{
+  background-color:var(--bg);
+  color:var(--fg);
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
 
 .tt{
   font-family: "Open Sans", sans-serif;
   font-style: normal;
+}
+
+/* Utility helpers to use the brand colors in non-Tailwind places */
+.bg-brand-maroon{ background-color: var(--brand-maroon); }
+.bg-brand-peach{ background-color: var(--brand-peach); }
+.bg-brand-cream{ background-color: var(--brand-cream); }
+.bg-brand-green{ background-color: var(--brand-green); }
+.text-brand-maroon{ color: var(--brand-maroon); }
+.text-brand-peach{ color: var(--brand-peach); }
+.text-brand-cream{ color: var(--brand-cream); }
+.text-brand-green{ color: var(--brand-green); }
+
+/* Make links and buttons use the primary theme by default */
+a, .btn-primary, .btn-accent{
+  transition: all 180ms ease-in-out;
+}
+
+.btn-primary{
+  background-color: var(--brand-maroon) !important;
+  border-color: var(--brand-maroon) !important;
+  color: #fff !important;
+}
+.btn-primary:hover{
+  background-color: #4f081a !important;
+  border-color: #4f081a !important;
+}
+
+.btn-secondary{
+  background-color: var(--brand-peach) !important;
+  border-color: var(--brand-peach) !important;
+  color: #111 !important;
 }
