@@ -1,4 +1,4 @@
-## SkillSwap – A Local Skill Exchange Platform
+## SkillSharing – A Local Skill Exchange Platform
 
 A responsive skill-sharing web platform where users can offer, learn, and exchange skills within their local community. Users can browse skill listings, view details, authenticate using Firebase, and manage their profiles.
 
